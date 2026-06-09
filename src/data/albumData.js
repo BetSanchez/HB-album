@@ -1,5 +1,5 @@
 // Rutas locales: coloca tus fotos en public/images/ (ver public/images/LEEME.txt)
-const img = (path) => `/images/${path}`
+const img = (path) => `${import.meta.env.BASE_URL}images/${path}`
 
 export const coverPhoto = img('portada.jpg')
 

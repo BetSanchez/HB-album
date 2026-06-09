@@ -29,7 +29,7 @@ export default function MusicControl() {
   return (
     <>
       <audio ref={audioRef} loop>
-        <source src="/music.mp3" type="audio/mpeg" />
+        <source src={`${import.meta.env.BASE_URL}music.mp3`} type="audio/mpeg" />
       </audio>
 
       <motion.div
