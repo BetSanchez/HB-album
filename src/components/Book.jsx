@@ -90,7 +90,7 @@ export default function Book({ onOpenGift, onBack }) {
         className="text-center mb-4"
       >
         <h2 className="font-display text-2xl sm:text-3xl font-bold text-gradient">
-          Nuestro Libro de Amor
+          Nuestra historia
         </h2>
         <p className="text-romantic-deep/60 text-sm mt-1">
           {getPageLabel()}

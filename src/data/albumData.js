@@ -9,41 +9,62 @@ export const chapters = [
     title: 'Cómo Nos Conocimos',
     subtitle: 'El inicio de todo',
     icon: '✨',
-    image: img('capitulos/capitulo01.jpg'),
+    image: img('capitulos/capitulo01.jpeg'),
     content:
-      'Recuerdo ese día como si fuera ayer. Un encuentro casual que cambió mi vida para siempre. Tus ojos brillaban y supe, en ese instante, que algo mágico estaba por comenzar. Desde la primera conversación, sentí que te conocía de toda la vida.',
+      'Recuerdo ese día que todo comenzo, te pedi ayuda con unas dudas que tenia sobre mi proyecto de residencia, y viste mi lapicero de Cinnamoroll, me dijiste que era muy lindo y que a ti tambien te gustaba desde ahí comenzamos a acercarnos hablarnos más .',
     date: 'El día que el destino nos unió',
   },
   {
+    id: 'first-picture',
+    title: 'Nuestra primera foto juntos',
+    subtitle: 'La primer foto',
+    icon: '📸',
+    image: img('capitulos/capitulo02.jpeg'),
+    content:
+      'Nuestra primer foto juntos, cuando recien nos pasamos a la oficina, Mario la tomo si no mal recuerdo, apenas y nos conociamos, habiamos hablado muy poco, pero esa elección de lugares, tenerte justo al lado fue lo que inicio toda esta historia, porque ahora no quiero que dejes de estar a mi lado.',
+    date: 'La primer foto',
+  },
+  {
+    id: 'Odoo',
+    title: 'Nuestra primer conferencia y evento tech juntos',
+    subtitle: 'Ese día en Odoo',
+    icon: '🟣',
+    image: img('capitulos/capitulo03.jpeg'),
+    content: 
+    'Recuerdas ese día, nos vieron pelear y nos dijeron que nosotros ibamos a terminar juntos, cosa que ambos negamos, nos parecia una idea tan ajena en ese momento, pero termino siendo real ',
+    date: 'Odoo',
+  },
+  {
+    id: 'Noviembre',
+    title: 'Nos volvimos mas cercanos',
+    subtitle: 'Nos acercamos',
+    icon: '🫶',
+    image: img('capitulos/capitulo04.jpeg'),
+    content: 
+    'Comenzamos a hablar mas y mas en la oficina, nos empezamso a volver mas cercanos, me contaste tu pasado y las cosas que no querias repetir, te conte un poco del mío porque aun me costaba abrirme mucho, pero nos acercamos cada día un poco más...',
+    date: 'Empezabamos a entender al otro',
+  },
+  {
+    id: 'Aniversario',
+    title: '12/12/25',
+    subtitle: 'El dia que todo empezo',
+    icon: '❤️‍🔥',
+    image: img('capitulos/capitulo05.jpeg'),
+    content: 
+    'Que puedo decir, sabes lo que paso ese día ambos intentamos negarlo por un tiempo, no aceptabamos que de verdad hubiera pasado pero sucedio, ambos llevabamos tiempo ocultandolo, pero solo un pequeño impulso basto, y como me dijeron "lo hicimos porque estabamos tomados, o tomamos para hacerlo.',
+    date: '12/12/25',
+  },
+  {
     id: 'our-adventures',
-    title: 'Nuestras Aventuras',
-    subtitle: 'Cada viaje contigo',
-    icon: '🌍',
-    image: img('capitulos/02-aventuras.jpg'),
+    title: 'TE AMO',
+    subtitle: 'ERES EL AMOR DE MI VIDA',
+    icon: '⭐',
+    image: img('capitulos/capitulo06.jpeg'),
     content:
-      'Juntos hemos explorado lugares increíbles y creado recuerdos inolvidables. Cada aventura contigo es una nueva página en nuestra historia. Desde paseos espontáneos hasta viajes soñados, cada momento a tu lado es una aventura que atesoro.',
-    date: 'Miles de kilómetros, un solo corazón',
+      'Y esto continua pero ya tengo mucho sueño amor perdon. TE AMO MUCHO.',
+    date: 'Te amo infinitamente',
   },
-  {
-    id: 'favorite-memories',
-    title: 'Mis Recuerdos Favoritos',
-    subtitle: 'Momentos que guardo en el alma',
-    icon: '💫',
-    image: img('capitulos/03-recuerdos.jpg'),
-    content:
-      'Hay momentos que se quedan grabados para siempre: tus risas, nuestras conversaciones hasta tarde, los abrazos que curan todo. Cada recuerdo contigo es un tesoro que llevo cerca del corazón. Eres mi momento favorito, una y otra vez.',
-    date: 'Los instantes que definen nuestro amor',
-  },
-  {
-    id: 'our-future',
-    title: 'Nuestro Futuro Juntos',
-    subtitle: 'Lo que aún está por venir',
-    icon: '🌟',
-    image: img('capitulos/04-futuro.jpg'),
-    content:
-      'Imagino un futuro lleno de amor, risas y sueños cumplidos a tu lado. Cada día contigo es una promesa de lo que vendrá. Quiero construir contigo un mañana hermoso, lleno de nuevas aventuras, más amor y una vida juntos que valga la pena.',
-    date: 'Para siempre y un día más',
-  },
+  
 ]
 
 export const pokemonCards = [
@@ -139,30 +160,8 @@ export const pokemonCards = [
   },
 ]
 
-export const loveLetter = `Mi amor,
-
-Hoy celebramos un día muy especial: el día en que llegaste al mundo para iluminar la mía. No hay palabras suficientes para expresar lo que siento por ti, pero quiero que sepas que eres lo más importante en mi vida.
-
-Cada momento a tu lado es un regalo. Tu amor me hace mejor persona, tu sonrisa me da fuerzas y tu presencia hace que todo tenga sentido.
-
-Este álbum es solo una pequeña muestra de todo lo que significas para mí. Cada página, cada recuerdo, cada carta coleccionable... todo es por ti.
-
-Gracias por existir, por amarme y por ser exactamente quien eres.
-
-Feliz cumpleaños, mi amor. Te amo infinitamente. ❤️
-
-Con todo mi corazón,
-Tu persona favorita 💕`
-
-export const birthdayVideoUrl =
-  'https://www.youtube.com/embed/450p7goxZqg?autoplay=0&rel=0'
-
 export const surpriseCard = {
-  name: 'Amor Legendario',
-  type: 'Corazón',
-  rarity: '★★★★',
-  hp: '∞',
-  image: img('sorpresa/carta-sorpresa.jpg'),
-  message:
-    'Hoy celebramos el día en que llegaste al mundo para iluminar la mía. Eres lo más importante en mi vida. Cada momento a tu lado es un regalo. Feliz cumpleaños, mi amor. Te amo infinitamente. ❤️',
+  name: 'Mew',
+  image: img('Mew.png'),
+  backImage: img('atras.png'),
 }

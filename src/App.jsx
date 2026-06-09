@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion'
 import AnimatedBackground from './components/AnimatedBackground'
 import Particles from './components/Particles'
 import MusicControl from './components/MusicControl'
+import DateGate from './components/DateGate'
 import CoverPage from './components/CoverPage'
 import Book from './components/Book'
 import FinalSurprise from './components/FinalSurprise'
@@ -14,32 +15,40 @@ const VIEWS = {
 }
 
 export default function App() {
+  const [unlocked, setUnlocked] = useState(false)
   const [view, setView] = useState(VIEWS.COVER)
 
   return (
     <div className="relative min-h-screen">
       <AnimatedBackground />
       <Particles count={140} />
-      <MusicControl />
 
       <AnimatePresence mode="wait">
-        {view === VIEWS.COVER && (
-          <CoverPage key="cover" onStart={() => setView(VIEWS.BOOK)} />
-        )}
+        {!unlocked ? (
+          <DateGate key="gate" onUnlock={() => setUnlocked(true)} />
+        ) : (
+          <>
+            <MusicControl />
 
-        {view === VIEWS.BOOK && (
-          <Book
-            key="book"
-            onOpenGift={() => setView(VIEWS.SURPRISE)}
-            onBack={() => setView(VIEWS.COVER)}
-          />
-        )}
+            {view === VIEWS.COVER && (
+              <CoverPage key="cover" onStart={() => setView(VIEWS.BOOK)} />
+            )}
 
-        {view === VIEWS.SURPRISE && (
-          <FinalSurprise
-            key="surprise"
-            onBack={() => setView(VIEWS.BOOK)}
-          />
+            {view === VIEWS.BOOK && (
+              <Book
+                key="book"
+                onOpenGift={() => setView(VIEWS.SURPRISE)}
+                onBack={() => setView(VIEWS.COVER)}
+              />
+            )}
+
+            {view === VIEWS.SURPRISE && (
+              <FinalSurprise
+                key="surprise"
+                onBack={() => setView(VIEWS.BOOK)}
+              />
+            )}
+          </>
         )}
       </AnimatePresence>
     </div>

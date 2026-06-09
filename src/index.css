@@ -98,6 +98,21 @@ body {
   background-clip: text;
 }
 
+.flip-card-scene {
+  perspective: 1200px;
+}
+
+.flip-card-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card-front {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
 .btn-romantic {
   background: linear-gradient(135deg, #FFE4F0, #FFD6EC);
   color: #227E9D;

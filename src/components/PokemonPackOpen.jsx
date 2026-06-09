@@ -1,7 +1,6 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { surpriseCard } from '../data/albumData'
-import AlbumPhoto from './AlbumPhoto'
 
 const TEAR_THRESHOLD = 0.75
 
@@ -40,76 +39,74 @@ function TearLine({ progress }) {
   )
 }
 
-function RevealCard({ card, onContinue }) {
+function RevealCard({ card }) {
+  const [isFlipped, setIsFlipped] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsFlipped(true), 900)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.3, y: 80, rotateY: -30 }}
-      animate={{ opacity: 1, scale: 1, y: 0, rotateY: 0 }}
+      initial={{ opacity: 0, scale: 0.3, y: 80 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.1 }}
       className="flex flex-col items-center w-full"
     >
       <motion.div
-        animate={{ boxShadow: ['0 0 20px rgba(253,80,164,0.3)', '0 0 40px rgba(150,208,210,0.5)', '0 0 20px rgba(253,80,164,0.3)'] }}
+        animate={{
+          boxShadow: [
+            '0 0 24px rgba(253,80,164,0.4)',
+            '0 0 48px rgba(150,208,210,0.6)',
+            '0 0 24px rgba(253,80,164,0.4)',
+          ],
+        }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="w-72 sm:w-80 rounded-2xl overflow-hidden border-[3px] border-romantic-gold/70 shadow-2xl bg-gradient-to-b from-romantic-cream to-white"
+        className="flip-card-scene w-64 sm:w-72 md:w-80 rounded-2xl"
       >
-        {/* Encabezado estilo carta */}
-        <div className="bg-gradient-to-r from-romantic-pink/80 to-romantic-purple/80 px-3 py-2 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <span className="text-white font-bold text-sm sm:text-base">{card.name}</span>
-            <span className="text-[10px] bg-white/25 text-white px-1.5 py-0.5 rounded">
-              HP {card.hp}
-            </span>
+        <motion.div
+          className="flip-card relative w-full cursor-pointer"
+          style={{ transformStyle: 'preserve-3d' }}
+          animate={{ rotateY: isFlipped ? 180 : 0 }}
+          transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }}
+          onClick={() => setIsFlipped((prev) => !prev)}
+        >
+          <div className="flip-card-face rounded-2xl overflow-hidden shadow-2xl">
+            <img
+              src={card.backImage}
+              alt="Reverso de la carta"
+              className="w-full h-auto block"
+              draggable={false}
+            />
           </div>
-          <span className="text-romantic-gold text-sm">{card.rarity}</span>
-        </div>
 
-        {/* Ilustración */}
-        <div className="p-3 bg-gradient-to-b from-romantic-light/20 to-romantic-teal/10">
-          <AlbumPhoto
-            src={card.image}
-            alt={card.name}
-            className="w-full"
-            imageClassName="w-full aspect-[4/3]"
-          />
-        </div>
-
-        {/* Tipo y descripción */}
-        <div className="px-3 py-2 border-t border-romantic-teal/20">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-[10px] sm:text-xs bg-romantic-pink/20 text-romantic-deep px-2 py-0.5 rounded-full font-semibold">
-              {card.type}
-            </span>
-            <span className="text-[10px] text-romantic-deep/50 italic">Carta Legendaria</span>
+          <div
+            className="flip-card-face flip-card-front rounded-2xl overflow-hidden shadow-2xl"
+          >
+            <img
+              src={card.image}
+              alt={card.name}
+              className="w-full h-auto block"
+              draggable={false}
+            />
           </div>
-          <p className="text-romantic-deep/90 text-xs sm:text-sm leading-relaxed italic text-center px-1">
-            "{card.message}"
-          </p>
-        </div>
-
-        {/* Pie de carta */}
-        <div className="bg-gradient-to-r from-romantic-teal/20 to-romantic-pink/20 px-3 py-1.5 flex justify-between items-center border-t border-romantic-gold/20">
-          <span className="text-[9px] text-romantic-deep/50">Edición Cumpleaños</span>
-          <span className="text-[9px] text-romantic-deep/50">001/001</span>
-        </div>
+        </motion.div>
       </motion.div>
 
-      <motion.button
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={onContinue}
-        className="btn-romantic mt-6 px-8 py-3 rounded-full font-semibold text-sm cursor-pointer"
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8 }}
+        className="text-romantic-deep/50 text-xs mt-4 text-center"
       >
-        Ver Regalo Completo 🎀
-      </motion.button>
+        Toca la carta para voltearla
+      </motion.p>
     </motion.div>
   )
 }
 
-export default function PokemonPackOpen({ onComplete }) {
+export default function PokemonPackOpen() {
   const [phase, setPhase] = useState('ready')
   const [tearProgress, setTearProgress] = useState(0)
   const [flash, setFlash] = useState(false)
@@ -292,7 +289,7 @@ export default function PokemonPackOpen({ onComplete }) {
             >
               ¡Carta legendaria obtenida!
             </motion.p>
-            <RevealCard card={surpriseCard} onContinue={onComplete} />
+            <RevealCard card={surpriseCard} />
           </motion.div>
         )}
       </AnimatePresence>

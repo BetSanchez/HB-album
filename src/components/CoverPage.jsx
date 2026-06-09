@@ -29,7 +29,7 @@ export default function CoverPage({ onStart }) {
           transition={{ delay: 0.5 }}
           className="text-romantic-deep/70 text-lg sm:text-xl font-light"
         >
-          Un álbum de amor hecho solo para ti
+          ¡Felicidades mi pastelito!
         </motion.p>
       </motion.div>
 
